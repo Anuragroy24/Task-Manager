@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive DOM Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+  <header class="app-header">
+    <div>
+    
+      <h1>Interactive Task Manager</h1>
+    </div>
+    <button class="theme-toggle" id="themeToggle" type="button" data-current-theme="light" aria-pressed="false">
+      Dark Mode
+    </button>
+  </header>
+
+  <main>
+    <section class="task-panel" aria-labelledby="taskFormTitle">
+      <div class="form-column">
+        <h2 id="taskFormTitle">Create Task</h2>
+        <form id="taskForm">
+          <label for="taskTitle">Task Title</label>
+          <input id="taskTitle" name="taskTitle" type="text" value="Read about the DOM" placeholder="Enter a task" required>
+
+          <label for="taskCategory">Category</label>
+          <select id="taskCategory" name="taskCategory">
+            <option value="study">Study</option>
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="project">Project</option>
+          </select>
+
+          <button type="submit">Add Task</button>
+        </form>
+
+        <div class="tools">
+          <label for="taskSearch">Search</label>
+          <input id="taskSearch" type="search" placeholder="Search tasks">
+
+          <label for="categoryFilter">Filter by Category</label>
+          <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="study">Study</option>
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="project">Project</option>
+          </select>
+
+          <button id="clearTasks" class="secondary" type="button">Clear All Tasks</button>
+        </div>
+      </div>
+
+      <div class="list-column">
+        <div class="counter-grid" aria-live="polite">
+          <div>
+            <span id="totalCounter">0</span>
+            <p>Total</p>
+          </div>
+          <div>
+            <span id="completedCounter">0</span>
+            <p>Completed</p>
+          </div>
+          <div>
+            <span id="pendingCounter">0</span>
+            <p>Pending</p>
+          </div>
+        </div>
+        <div class="task-list" id="taskList" aria-label="Task list"></div>
+      </div>
+    </section>
+
+    <section class="propagation-section" aria-labelledby="propagationTitle">
+      <h2 id="propagationTitle">Event Propagation Demo</h2>
+      <p>Open the browser console, then click the button to see capturing and bubbling order.</p>
+      <div class="grandparent" id="grandparent">
+        Grandparent
+        <div class="parent" id="parent">
+          Parent
+          <button class="child-button" id="childButton" type="button">Child Button</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="pipeline-section" aria-labelledby="pipelineTitle">
+      <h2 id="pipelineTitle">Browser Rendering Pipeline</h2>
+     <div class="pipeline-flow" aria-label="Browser rendering pipeline flow">
+        <div class="pipeline-box">HTML</div>
+        <div class="pipeline-arrow">↓</div>
+        <div class="pipeline-box">Parsing</div>
+        <div class="pipeline-arrow">↓</div>
+        <div class="pipeline-box">Tokenization</div>
+        <div class="pipeline-arrow">↓</div>
+        <div class="pipeline-box">DOM Tree</div>
+        <div class="pipeline-gap" aria-hidden="true"></div>
+        <div class="pipeline-box">CSS</div>
+        <div class="pipeline-arrow">↓</div>
+        <div class="pipeline-box">CSSOM Tree</div>
+        <div class="pipeline-gap" aria-hidden="true"></div>
+        <div class="pipeline-box">DOM Tree + CSSOM Tree</div>
+        <div class="pipeline-arrow">↓</div>
+        <div class="pipeline-box">Render Tree</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
